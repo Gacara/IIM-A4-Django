@@ -15,11 +15,11 @@ def thanks(request):
     return HttpResponse("Thank you! Will get in touch soon.")
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
-    context_object_name = 'latest_question_list'
+    context_object_name = 'latest_cv_list'
 
     def get_queryset(self):
-        """Return the last five published questions."""
-        return Question.objects.order_by('-pub_date')[:5]
+        """Return the last five published CV."""
+        return Contact.objects.order_by('-pub_date')[:5]
 
 class PollsView(generic.ListView):
     template_name = 'polls/polls.html'
@@ -33,6 +33,9 @@ class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
 
+class CvView(generic.DetailView):
+    model = Question
+    template_name = 'polls/results.html'
 
 class ResultsView(generic.DetailView):
     model = Question

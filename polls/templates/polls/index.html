@@ -1,12 +1,13 @@
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
-{% if latest_question_list %}
+{% if latest_cv_list %}
     <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% for contact in latest_cv_list %}
+        <li><a href="{% url 'polls:detail' contact.id %}">{{ contact.first_name }} {{ contact.last_name }}, Skills: {{ contact.message }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No polls are available.</p>
+    <p>No CV are available.</p>
 {% endif %}
+<a href="{% url 'polls:contact' %}">Ajouter son CV</a>

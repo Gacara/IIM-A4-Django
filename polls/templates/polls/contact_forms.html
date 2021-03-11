@@ -5,7 +5,7 @@
     <title>Enter your CV here</title>
 </head>
 <body>
-<form method="POST" action="{% url "contact" %}">
+<form method="POST" action="{% url 'polls:contact' %}">
     {% csrf_token %}
     {{ form }}
     <button type="submit">SEND</button>
