@@ -2,7 +2,6 @@
 {% load static %}
 {% load tag %}
 
-
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 <div id="flex"> 
@@ -16,8 +15,6 @@
         <a href="{% url 'polls:contact' %}">Ajouter son CV</a>
     </div>
      </div>
-
-
         <div id="cards_landscape_wrap-2">
             <div class="container">
                 <div class="row">
@@ -43,11 +40,6 @@
                     {% else %}
                     <p>No CV are available.</p>
                 {% endif %}
-
-
-                    
-                   
-
                 </div>
             </div>
         </div>
