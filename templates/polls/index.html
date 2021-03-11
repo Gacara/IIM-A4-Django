@@ -5,14 +5,17 @@
 
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
-
-<a href="{% url 'polls:contact' %}">Ajouter son CV</a>
-<br>
-<span>Pour filter par skill : </span>
-<form action="{%url 'polls:index' %}"  method="get">
-    <input type="text" name="contains" placeholder="Search...">
-    <button  type="submit">Filtrer</button>
- </form>
+<div id="flex"> 
+    <div><span>Pour filtrer par skill : </span>
+    <form action="{%url 'polls:index' %}"  method="get">
+        <input type="text" name="contains" placeholder="Search...">
+        <button  type="submit">Filtrer</button>
+     </form>
+    </div>
+    <div id="add" >
+        <a href="{% url 'polls:contact' %}">Ajouter son CV</a>
+    </div>
+     </div>
 
 
         <div id="cards_landscape_wrap-2">

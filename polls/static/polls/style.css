@@ -1,4 +1,15 @@
 /*----  Main Style  ----*/
+
+#flex{
+    padding: 15px 0 5px 15px;
+    display: flex;
+    align-items: flex-end;
+}
+
+#add{
+    padding-left: 15px;
+}
+
 #cards_landscape_wrap-2{
     text-align: center;
     background: #F7F7F7;
