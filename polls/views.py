@@ -11,7 +11,6 @@ class ContactCreate(generic.CreateView):
     fields = ["first_name", "last_name", "message"]
     success_url = reverse_lazy("thanks")
 
-
 def thanks(request):
     return HttpResponse("Thank you! Will get in touch soon.")
 class IndexView(generic.ListView):
