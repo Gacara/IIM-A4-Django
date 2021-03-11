@@ -1,24 +1,53 @@
+{% extends 'base.html' %}
 {% load static %}
 {% load tag %}
 
+
+{% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 
-{% if latest_cv_list  %}
-    <ul>
-    {% for contact in latest_cv_list %}
-        <li>
-            <a href="{% url 'polls:cv' contact.id %}">{{ contact.first_name }} {{ contact.last_name }}</a>
-            <span>Skills: {{ contact.message }}</span>
-        </li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No CV are available.</p>
-{% endif %}
 <a href="{% url 'polls:contact' %}">Ajouter son CV</a>
-<br><br><br>
+<br>
 <span>Pour filter par skill : </span>
 <form action="{%url 'polls:index' %}"  method="get">
     <input type="text" name="contains" placeholder="Search...">
     <button  type="submit">Filtrer</button>
  </form>
+
+
+        <div id="cards_landscape_wrap-2">
+            <div class="container">
+                <div class="row">
+                    {% if latest_cv_list  %}
+                    {% for contact in latest_cv_list %}
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+
+                                <a href="{% url 'polls:cv' contact.id %}">
+                                    <div class="card-flyer">
+                                        <div class="text-box">
+                                            <div class="image-box">
+                                                <img src="{{ contact.cv_Img.url }}" alt="" />
+                                            </div>
+                                            <div class="text-container">
+                                                <h6>{{ contact.first_name }} {{ contact.last_name }} </h6>
+                                                <p>Skills: {{ contact.message }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                    {% endfor %}
+                    {% else %}
+                    <p>No CV are available.</p>
+                {% endif %}
+
+
+                    
+                   
+
+                </div>
+            </div>
+        </div>
+    
+
+         {% endblock %}
