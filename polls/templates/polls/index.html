@@ -4,7 +4,7 @@
 {% if latest_cv_list %}
     <ul>
     {% for contact in latest_cv_list %}
-        <li><a href="{% url 'polls:detail' contact.id %}">{{ contact.first_name }} {{ contact.last_name }}, Skills: {{ contact.message }}</a></li>
+        <li><a href="{% url 'polls:cv' contact.id %}">{{ contact.first_name }} {{ contact.last_name }}, Skills: {{ contact.message }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
