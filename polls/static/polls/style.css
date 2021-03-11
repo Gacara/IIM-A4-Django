@@ -4,6 +4,7 @@
     padding: 15px 0 5px 15px;
     display: flex;
     align-items: flex-end;
+    min-height: 10vh;
 }
 
 #add{
@@ -15,8 +16,9 @@
     background: #F7F7F7;
   }
   #cards_landscape_wrap-2 .container{
-    padding-top: 80px; 
-    padding-bottom: 100px;
+    padding-top: 30px; 
+    padding-bottom: 50px;
+    min-height: 90vh;
   }
   #cards_landscape_wrap-2 a{
     text-decoration: none;
