@@ -2,7 +2,7 @@
 {% load tag %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
-<span>Pour filter par skill, entrer ?contains=*skills* dans l'url </span>
+
 {% if latest_cv_list  %}
     <ul>
     {% for contact in latest_cv_list %}
@@ -16,17 +16,9 @@
     <p>No CV are available.</p>
 {% endif %}
 <a href="{% url 'polls:contact' %}">Ajouter son CV</a>
-
-
-{% if CvContains %}
-    <ul>
-    {% for contact in CvContains %}
-        <li>
-            <a href="{% url 'polls:cv' contact.id %}">{{ contact.first_name }} {{ contact.last_name }}</a>
-            <span>Skills: {{ contact.message }}</span>
-        </li>
-    {% endfor %}
-    </ul>
-    {% else %}
-    <p>No CV are available.</p>
-{% endif %}
+<br><br><br>
+<span>Pour filter par skill : </span>
+<form action="{%url 'polls:index' %}"  method="get">
+    <input type="text" name="contains" placeholder="Search...">
+    <button  type="submit">Filtrer</button>
+ </form>
