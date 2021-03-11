@@ -9,17 +9,15 @@ class ContactCreate(generic.CreateView):
     template_name = 'polls/contact_forms.html'
     model = Contact
     fields = ["first_name", "last_name", "message"]
-    success_url = reverse_lazy("thanks")
+    success_url = reverse_lazy('polls:index')
 
-def thanks(request):
-    return HttpResponse("Thank you! Will get in touch soon.")
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
     context_object_name = 'latest_cv_list'
 
     def get_queryset(self):
         """Return the last five published CV."""
-        return Contact.objects.order_by('-pub_date')[:5]
+        return Contact.objects.order_by('-pub_date')[:50]
 
 class PollsView(generic.ListView):
     template_name = 'polls/polls.html'
