@@ -8,7 +8,7 @@ from .models import Choice, Question, Contact
 class ContactCreate(generic.CreateView):
     template_name = 'polls/contact_forms.html'
     model = Contact
-    fields = ["first_name", "last_name", "message"]
+    fields = ["first_name", "last_name", "message", "cv_Img"]
     success_url = reverse_lazy('polls:index')
 
 class IndexView(generic.ListView):

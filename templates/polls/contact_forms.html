@@ -5,10 +5,10 @@
     <title>Enter your CV here</title>
 </head>
 <body>
-<form method="POST" action="{% url 'polls:contact' %}">
+<form method="POST" enctype="multipart/form-data" action="{% url 'polls:contact' %}"> 
     {% csrf_token %}
     {{ form }}
-    <button type="submit">SEND</button>
+    <button type="submit">Envoyer mon CV</button>
 </form>
 <a href="{% url 'polls:index' %}">Retour à la liste</a>
 </body>

@@ -25,6 +25,8 @@ class Contact(models.Model):
     last_name = models.CharField(max_length=100)
     message = models.TextField(max_length=400)
     pub_date = models.DateTimeField(auto_now=True)
+    cv_Img = models.ImageField(upload_to='images/') 
+
     def __str__(self):
         return f"{self.first_name} {self.last_name}, Skills: {self.message}"
     def was_published_recently(self):
