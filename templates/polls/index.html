@@ -2,7 +2,8 @@
 {% load tag %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
-{% if latest_cv_list %}
+<span>Pour filter par skill, entrer ?contains=*skills* dans l'url </span>
+{% if latest_cv_list  %}
     <ul>
     {% for contact in latest_cv_list %}
         <li>

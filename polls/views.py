@@ -17,11 +17,14 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last 50 published CV."""
-        return Contact.objects.order_by('-pub_date')[:50]
+        contains = self.request.GET.get('contains')
+        if contains is None:
+            return Contact.objects.order_by('-pub_date')
+        return Contact.objects.order_by('-pub_date').filter(message__contains=contains)[:50]
 
-    def get_context_data(self, contains="", **kwargs):
+    def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        context['skills_contains'] = Contact.objects.all().filter(message__contains=contains)
+        context['skills_contains'] = Contact.objects.all().filter(message__contains="")
         return context
 
 class PollsView(generic.ListView):
