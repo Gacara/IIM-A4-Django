@@ -16,8 +16,13 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_cv_list'
 
     def get_queryset(self):
-        """Return the last five published CV."""
+        """Return the last 50 published CV."""
         return Contact.objects.order_by('-pub_date')[:50]
+
+    def get_context_data(self, contains="", **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context['skills_contains'] = Contact.objects.all().filter(message__contains=contains)
+        return context
 
 class PollsView(generic.ListView):
     template_name = 'polls/polls.html'
