@@ -1,10 +1,19 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 
-from .models import Choice, Question
+from .models import Choice, Question, Contact
 
+class ContactCreate(generic.CreateView):
+    template_name = 'polls/contact_forms.html'
+    model = Contact
+    fields = ["first_name", "last_name", "message"]
+    success_url = reverse_lazy("thanks")
+
+
+def thanks(request):
+    return HttpResponse("Thank you! Will get in touch soon.")
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
